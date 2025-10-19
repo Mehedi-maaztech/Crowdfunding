@@ -1,0 +1,92 @@
+[
+  {
+    "id": 1,
+    "title": "Save the Children",
+    "image": "https://media.gettyimages.com/photos/save-the-children-picture-id123456789",
+    "description": "Help provide education and food for underprivileged children around the world.",
+    "goal": 10000,
+    "raised": 7200,
+    "deadline": "2025-12-15"
+  },
+  {
+    "id": 2,
+    "title": "Clean Water Initiative",
+    "image": "https://media.gettyimages.com/photos/clean-water-charity-picture-id987654321",
+    "description": "Bring clean and safe drinking water to rural communities across the globe.",
+    "goal": 8000,
+    "raised": 5600,
+    "deadline": "2025-11-30"
+  },
+  {
+    "id": 3,
+    "title": "Tree Plantation Drive",
+    "image": "https://media.gettyimages.com/photos/tree-plantation-drive-picture-id112233445",
+    "description": "Join us in planting 50,000 trees to combat deforestation and climate change.",
+    "goal": 5000,
+    "raised": 4300,
+    "deadline": "2026-01-10"
+  },
+  {
+    "id": 4,
+    "title": "Support Local Farmers",
+    "image": "https://media.gettyimages.com/photos/support-local-farmers-picture-id998877665",
+    "description": "Empower small-scale farmers with tools, seeds, and training for sustainable farming.",
+    "goal": 12000,
+    "raised": 9500,
+    "deadline": "2025-12-25"
+  },
+  {
+    "id": 5,
+    "title": "Women Empowerment Fund",
+    "image": "https://media.gettyimages.com/photos/women-empowerment-picture-id556677889",
+    "description": "Support women entrepreneurs with microloans to start and grow their businesses.",
+    "goal": 15000,
+    "raised": 11000,
+    "deadline": "2025-11-22"
+  },
+  {
+    "id": 6,
+    "title": "Education for All",
+    "image": "https://media.gettyimages.com/photos/education-for-all-picture-id223344556",
+    "description": "Help us provide free educational resources and scholarships to underprivileged students.",
+    "goal": 20000,
+    "raised": 14000,
+    "deadline": "2026-02-10"
+  },
+  {
+    "id": 7,
+    "title": "Disaster Relief Fund",
+    "image": "https://media.gettyimages.com/photos/disaster-relief-fund-picture-id667788990",
+    "description": "Provide emergency aid, food, and shelter for families affected by natural disasters.",
+    "goal": 25000,
+    "raised": 17000,
+    "deadline": "2025-12-05"
+  },
+  {
+    "id": 8,
+    "title": "Animal Shelter Support",
+    "image": "https://media.gettyimages.com/photos/animal-shelter-support-picture-id334455667",
+    "description": "Help us build safe shelters and provide medical care for abandoned and stray animals.",
+    "goal": 7000,
+    "raised": 4200,
+    "deadline": "2025-11-28"
+  },
+  {
+    "id": 9,
+    "title": "Youth Skill Development",
+    "image": "https://media.gettyimages.com/photos/youth-skill-development-picture-id889900112",
+    "description": "Train young adults with modern skills like coding, design, and digital marketing.",
+    "goal": 9000,
+    "raised": 6700,
+    "deadline": "2026-01-05"
+  },
+  {
+    "id": 10,
+    "title": "Healthcare Access Project",
+    "image": "https://media.gettyimages.com/photos/healthcare-access-project-picture-id445566778",
+    "description": "Provide medical supplies, mobile clinics, and vaccinations to rural communities.",
+    "goal": 18000,
+    "raised": 12000,
+    "deadline": "2026-03-01"
+  }
+]
