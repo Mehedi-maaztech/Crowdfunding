@@ -1,12 +1,13 @@
-import React from 'react';
+import { useLoaderData } from 'react-router-dom';
 import Banner from '../component/Banner';
 import RunningCampaign from '../component/RunningCampaign';
 
 const HomePage = () => {
+    const limitedcampaigns = useLoaderData();
     return (
         <div>
             <Banner></Banner>
-            <RunningCampaign></RunningCampaign>
+            <RunningCampaign limitedcampaigns={limitedcampaigns}></RunningCampaign>
         </div>
     );
 };

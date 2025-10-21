@@ -6,6 +6,10 @@ import AddNewCampaign from '../pages/AddNewCampaign';
 import AuthLayout from '../layouts/AuthLayout';
 import Signin from '../component/Signin';
 import Register from '../component/Register';
+import AllCampaigns from '../component/AllCampaigns';
+import MyCampaign from '../component/MyCampaign';
+import CampaignDetails from '../component/CampaignDetails';
+import PrivateRoutes from './PrivateRoutes';
 
 const router = createBrowserRouter([
     {
@@ -14,9 +18,30 @@ const router = createBrowserRouter([
         children: [
             {
                 path: '/',
-                element: <HomePage></HomePage>
+                element: <HomePage></HomePage>,
+                loader: () => fetch('http://localhost:5000/campaigns/lmt'),
             }
+
         ]
+    },
+    {
+        path: '/allCampaign',
+        element: <AllCampaigns></AllCampaigns>,
+        loader: () => fetch('http://localhost:5000/campaigns')
+    },
+    {
+        path: '/campaigns/:id',
+        element: <PrivateRoutes><CampaignDetails></CampaignDetails></PrivateRoutes>,
+        loader: ({params}) => fetch(`http://localhost:5000/campaigns/${params.id}`)
+    },
+    {
+        path: '/addNewCampaign',
+        element: <PrivateRoutes><AddNewCampaign></AddNewCampaign></PrivateRoutes>,
+    },
+    {
+        path: '/myCampaign/user/:username',
+        element: <PrivateRoutes><MyCampaign></MyCampaign></PrivateRoutes>,
+        loader: ({params}) => fetch(`http://localhost:5000/campaigns/user/${params.username}`)
     },
     {
         path: '/auth',
@@ -35,11 +60,7 @@ const router = createBrowserRouter([
     {
         path: '*',
         element: <ErrorPage></ErrorPage>
-    },
-    {
-        path: '/addNewCampaign',
-        element: <AddNewCampaign></AddNewCampaign>
-    },
+    }
 ])
 
 export default router;

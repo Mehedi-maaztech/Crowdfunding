@@ -1,26 +1,11 @@
-import React, { useState } from 'react';
+import { useContext } from 'react';
 import { Link, NavLink } from 'react-router-dom';
-// const mockUser = {
-//   isLoggedIn: true,
-//   displayName: "Alex Johnson",
-//   photoURL: "https://i.pravatar.cc/150?img=68" // Placeholder image
-// };
-
-const handleLogout = () => {
-  console.log("User logged out");
-  // In a real application, you'd implement your actual logout logic here
-  alert("Logged out (Simulated)");
-};
+import { AuthContext } from '../provider/AuthProvider';
 
 const NavBar = () => {
-  // Replace this with your actual authentication hook/context
-  // const user = mockUser.isLoggedIn ? mockUser : null;
-
-  const [user, setUser] = useState({
-    name: "Mehedi Hasan",
-    email: "mehedi@gmail.com"
-  })
-  // Base navigation links for all users
+  const {user, signOutUser} = useContext(AuthContext);
+  // console.log(user.displayName);
+  const newUser = user?.displayName;
   const navLinks = (
     <>
       <li><NavLink to="/" className=''>Home</NavLink></li>
@@ -29,8 +14,8 @@ const NavBar = () => {
       {user && (
         <>
           <li><NavLink to="/addNewCampaign">Add New Campaign</NavLink></li>
-          <li><NavLink to="/myCampaign">My Campaign</NavLink></li>
-          <li><NavLink to="/myDonations">My Donations</NavLink></li>
+          <li><NavLink to={`/myCampaign/user/${newUser}`}>My Campaign</NavLink></li>
+          {/* <li><NavLink to="/myDonations">My Donations</NavLink></li> */}
         </>
       )}
     </>
@@ -65,14 +50,14 @@ const NavBar = () => {
       <div className="navbar-end">
         {user ? (
           <div className="dropdown dropdown-end">
-            <div tabIndex={0} role="button" className="rounded-full w-10 h-10 overflow-hidden">
-              <img src="https://media.istockphoto.com/id/1945802620/photo/portrait-of-handsome-bearded-man-in-glasses-outdoors.webp?s=2048x2048&w=is&k=20&c=4-pWS0vgUc003HVMS3QH77qwjLAR1sxdAlBLJ92CjI8=" alt="" className='object-cover'/>
+            <div tabIndex={0} role="button" className="rounded-field">
+              <button className='btn btn-ghost text-yellow-800'>{user.displayName}</button>
             </div>
             <ul
               tabIndex="-1"
               className="menu dropdown-content bg-base-200 rounded-box z-1 mt-4 w-52 p-2 shadow-sm">
-              <li><a>Item 1</a></li>
-              <li><a>Item 2</a></li>
+              <li><a>{user.email}</a></li>
+              <li><button className='btn btn-wide' onClick={signOutUser}>Logout</button></li>
             </ul>
           </div>
         ) : (

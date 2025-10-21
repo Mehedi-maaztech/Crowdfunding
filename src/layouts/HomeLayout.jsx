@@ -1,12 +1,28 @@
-import React from 'react';
 import NavBar from '../component/Navbar';
 import Footer from '../component/Footer';
 import { Outlet } from 'react-router-dom';
-
+import { useEffect, useState } from "react";
 const HomeLayout = () => {
+    const [theme, setTheme] = useState("light");
+
+    useEffect(() => {
+        document.querySelector("html").setAttribute("data-theme", theme);
+    }, [theme]);
+
+    const toggleTheme = () => {
+        setTheme(theme === "light" ? "dark" : "light");
+    };
     return (
         <div>
             {/* <h2 className='text-2xl'>This is Home</h2> */}
+            <div>
+                <button
+                    className={'btn btn-circle btn-md fixed left-4 top-[30%] z-100'}
+                    onClick={toggleTheme}
+                >
+                    {theme === "light" ? "🌞" : "🌙"}
+                </button>
+            </div>
             <header>
                 <NavBar></NavBar>
             </header>

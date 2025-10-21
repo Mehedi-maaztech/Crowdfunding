@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const Campaign = ({ campaign }) => {
-    const { title, image, description, goal, raised, deadline } = campaign;
+    const { _id ,title, image, description, goal, raised, deadline } = campaign;
 
     const remainingDays = Math.ceil(
         (new Date(deadline) - new Date()) / (1000 * 60 * 60 * 24)
@@ -62,7 +62,7 @@ const Campaign = ({ campaign }) => {
                             {Math.round(percentRaised)}% FUNDED
                         </span>
                         <span className="text-gray-500">
-                            Goal: **${goal.toLocaleString()}**
+                            Goal: <strong>${goal?.toLocaleString() ?? 0}</strong>
                         </span>
                     </div>
                 </div>
@@ -81,7 +81,7 @@ const Campaign = ({ campaign }) => {
                     </span>
 
                     {/* Button: Subtle 'ghost' style on card-hover, strong primary action off-hover */}
-                    <Link>
+                    <Link to={`/campaigns/${_id}`}>
                         <button className="btn btn-sm rounded-lg font-bold shadow-lg transition-all transform group-hover:scale-105">
                             VIEW DETAILS
                         </button>

@@ -1,6 +1,9 @@
+import { useContext } from "react";
+import { AuthContext } from "../provider/AuthProvider";
 
 const AddNew = () => {
-
+  const {user} = useContext(AuthContext);
+  // console.log(user)
   const handleAddCampaign = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -13,7 +16,20 @@ const AddNew = () => {
     const email = form.email.value;
     const username = form.username.value;
     const formData = { image, campainTitle, campaignType, description, donation, deadline, email, username }
-    console.log(formData);
+    // console.log(formData);
+
+    fetch('http://localhost:5000/campaigns', {
+      method: "POST",
+      headers: {
+        'content-type' : 'application/json'
+      },
+      body: JSON.stringify(formData)
+    })
+    .then(res => res.json())
+    .then(data => console.log(data))
+
+    form.reset();
+    
   }
   return (
     <div className="max-w-7xl mx-auto px-4 min-h-[80vh] flex justify-center items-center">
@@ -84,6 +100,7 @@ const AddNew = () => {
           name="email"
           className="input input-bordered w-full cursor-not-allowed"
           placeholder="Email"
+          defaultValue={user.email}
           readOnly
         />
 
@@ -94,6 +111,7 @@ const AddNew = () => {
           name="username"
           className="input input-bordered w-full cursor-not-allowed"
           placeholder="Your Name"
+          defaultValue={user.displayName}
           readOnly
         />
 

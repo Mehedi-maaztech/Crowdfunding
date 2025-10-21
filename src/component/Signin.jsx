@@ -1,15 +1,58 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../provider/AuthProvider';
+import { toast } from 'react-toastify';
+import { FaGoogle } from "react-icons/fa";
 
 const Signin = () => {
+    const { signinUser, setUser, signInwithGoogle } = useContext(AuthContext);
 
+    const navigate = useNavigate();
     const handleSignin = e => {
         e.preventDefault();
         const form = e.target;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(email, password)
+        // console.log(email, password)
 
+        signinUser(email, password)
+            .then(res => {
+
+                console.log("User logged in", res.user);
+
+                const lastSignInTime = res.user.metadata.lastSignInTime;
+                const loginInfo = { email, lastSignInTime }
+
+                fetch('http://localhost:5000/users', {
+                    method: "PATCH",
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(loginInfo)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        // console.log('sign in info updated in db',data)
+                        toast('successfully signed in', data.displayname)
+                    })
+                const newUser = res.user
+                setUser(newUser);
+                // console.log(user, loginInfo);
+                form.reset();
+                navigate('/');
+            })
+            .catch(err => {
+                console.log(err.message);
+                // toast("Error, Check Credential")
+            })
+    }
+    const hanadleGoogleSignIn = () => {
+        signInwithGoogle()
+            .then(result => {
+                console.log(result.user);
+                toast('successfully signed in')
+                navigate('/');
+            })
     }
     return (
         <div className="max-w-7xl mx-auto px-4 min-h-[80vh] flex justify-center items-center">
@@ -23,7 +66,7 @@ const Signin = () => {
                 <label className="label mt-4">Email</label>
                 <input
                     type="text"
-                    name="username"
+                    name="email"
                     className="input input-bordered w-full"
                     placeholder="Email"
                 />
@@ -47,7 +90,12 @@ const Signin = () => {
                         Register now
                     </Link>
                 </p>
+                <p className='text-center py-5'>
+                    <button className='btn btn-wide' onClick={hanadleGoogleSignIn}><FaGoogle />
+                        Sign in with google</button>
+                </p>
             </form>
+
         </div>
     );
 };
