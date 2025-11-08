@@ -19,8 +19,7 @@ const router = createBrowserRouter([
             {
                 path: '/',
                 element: <HomePage></HomePage>,
-                loader: () => fetch('http://localhost:5000/campaigns/lmt'),
-                // loader: () => fetch('https://crowdcube-server-virid.vercel.app/campaigns/lmt'),
+                loader: () => fetch('https://crowdfunding-server-yg1l.onrender.com/campaigns/lmt')
             }
 
         ]
@@ -28,14 +27,12 @@ const router = createBrowserRouter([
     {
         path: '/allCampaign',
         element: <AllCampaigns></AllCampaigns>,
-        loader: () => fetch('http://localhost:5000/campaigns')
-        // loader: () => fetch('https://crowdcube-server-virid.vercel.app/campaigns')
+        loader: () => fetch('https://crowdfunding-server-yg1l.onrender.com/campaigns')
     },
     {
         path: '/campaigns/:id',
         element: <PrivateRoutes><CampaignDetails></CampaignDetails></PrivateRoutes>,
-        loader: ({params}) => fetch(`http://localhost:5000/campaigns/${params.id}`)
-        // loader: ({params}) => fetch(`https://crowdcube-server-virid.vercel.app/campaigns${params.id}`)
+        loader: ({params}) => fetch(`https://crowdfunding-server-yg1l.onrender.com/campaigns/${params.id}`)
     },
     {
         path: '/addNewCampaign',
@@ -44,8 +41,7 @@ const router = createBrowserRouter([
     {
         path: '/myCampaign/user/:username',
         element: <PrivateRoutes><MyCampaign></MyCampaign></PrivateRoutes>,
-        loader: ({params}) => fetch(`http://localhost:5000/campaigns/user/${params.username}`)
-        // loader: ({params}) => fetch(`https://crowdcube-server-virid.vercel.app/campaigns/user/${params.username}`)
+        loader: ({params}) => fetch(`https://crowdfunding-server-yg1l.onrender.com/campaigns/user/${params.username}`)
     },
     {
         path: '/auth',

@@ -18,7 +18,7 @@ const AddNew = () => {
     const formData = { image, campainTitle, campaignType, description, donation, deadline, email, username }
     // console.log(formData);
 
-    fetch('http://localhost:5000/campaigns', {
+    fetch('https://crowdfunding-server-yg1l.onrender.com/campaigns', {
       method: "POST",
       headers: {
         'content-type' : 'application/json'

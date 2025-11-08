@@ -21,7 +21,7 @@ const Register = () => {
                 const fireid = res.user.uid;
                 const newUser = { name, email, fireid, createdAT }
 
-                fetch(`http://localhost:5000/users`, {
+                fetch(`https://crowdfunding-server-yg1l.onrender.com/users`, {
                     method: "POST",
                     headers: {
                         'content-type': 'application/json'
